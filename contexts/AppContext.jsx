@@ -36,10 +36,6 @@ export function AppProvider({ children }) {
     const loadVoices = () => {
       const voices = speechSynthesis.getVoices();
       setAvailableVoices(voices);
-      console.log(
-        "[v0] Available voices:",
-        voices.map((v) => `${v.name} (${v.lang})`)
-      );
     };
 
     loadVoices();
@@ -88,10 +84,6 @@ export function AppProvider({ children }) {
         (voice) => voice.lang.includes("en-US") || voice.lang.includes("en-GB")
       );
       utterance.lang = "en-US";
-      console.log(
-        "[v0] Selected voice for English:",
-        selectedVoice?.name || "default"
-      );
     }
     if (selectedVoice) {
       utterance.voice = selectedVoice;
