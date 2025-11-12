@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "api/chatbot.js": {
+        "memory": 2048,
+        "maxDuration": 30
+      }
+    }
+  }

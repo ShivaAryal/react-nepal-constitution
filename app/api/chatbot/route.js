@@ -4,7 +4,6 @@ import fs from "fs/promises";
 import path from "path";
 import { pipeline } from "@xenova/transformers";
 
-// Load embeddings at startup
 let embeddingsData = [];
 
 const loadEmbeddings = async () => {
@@ -29,14 +28,14 @@ const loadEmbeddings = async () => {
       throw new Error("Invalid embeddings data format");
     }
   } catch (error) {
-    console.error("[v0] Failed to load embeddings:", error.message);
+    console.error("Failed to load embeddings:", error.message);
     throw new Error("Failed to initialize embeddings data");
   }
 };
 
 // Initialize embeddings on module load
 loadEmbeddings().catch((error) => {
-  console.error("[v0] Initialization error:", error.message);
+  console.error("Initialization error:", error.message);
 });
 
 // Fuse.js for fallback search
@@ -67,7 +66,7 @@ export async function POST(request) {
     let { question, language } = await request.json();
     language = capitalizeFirstLetter(language);
     if (!question || !language) {
-      console.error("[v0] Empty or invalid request body:", {
+      console.error("Empty or invalid request body:", {
         question,
         language,
       });
@@ -140,7 +139,7 @@ export async function POST(request) {
       success: true,
     });
   } catch (error) {
-    console.error("[v0] Chatbot API error:", {
+    console.error("Chatbot API error:", {
       error: error.message,
       requestBody: await request.json().catch(() => ({})),
     });
