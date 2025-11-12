@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { AppProvider } from "@/contexts/AppContext";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import "./globals.css";
+import { Chatbot } from "@/components/Chatbot";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         <AppProvider>
           {children}
           <AudioPlayer />
+          <Chatbot />
         </AppProvider>
         <Analytics />
       </body>
