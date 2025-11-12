@@ -4,6 +4,11 @@ import fs from "fs/promises";
 import path from "path";
 import { pipeline } from "@xenova/transformers";
 
+import { env } from "@xenova/transformers";
+
+// Force the use of the WASM backend
+env.backends.onnx.wasm = true;
+
 let embeddingsData = [];
 
 const loadEmbeddings = async () => {
